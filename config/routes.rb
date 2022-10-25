@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :adresses
+  resources :citizens
+  resources :counties
   get 'home/index'
   devise_for :users
 

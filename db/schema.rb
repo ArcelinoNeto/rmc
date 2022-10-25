@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_25_134645) do
+ActiveRecord::Schema.define(version: 2022_10_25_205359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adresses", force: :cascade do |t|
+    t.string "postal_code"
+    t.string "street"
+    t.string "district"
+    t.string "city"
+    t.string "state"
+    t.string "ibge_code"
+    t.bigint "citizen_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["citizen_id"], name: "index_adresses_on_citizen_id"
+  end
+
+  create_table "citizens", force: :cascade do |t|
+    t.string "full_name"
+    t.string "cpf"
+    t.string "cns"
+    t.string "email"
+    t.string "birthdate"
+    t.string "phone"
+    t.integer "status"
+    t.string "photograph"
+    t.bigint "county_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["county_id"], name: "index_citizens_on_county_id"
+  end
+
+  create_table "counties", force: :cascade do |t|
+    t.string "name"
+    t.integer "status"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_counties_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +60,13 @@ ActiveRecord::Schema.define(version: 2022_10_25_134645) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "adresses", "citizens"
+  add_foreign_key "citizens", "counties"
+  add_foreign_key "counties", "users"
 end
