@@ -1,0 +1,41 @@
+<section class="container forms">
+  <div class="form signup">
+    <div class="form-content">
+      <header>Signup</header>
+      
+      <%= form_for([@user]) do |f| %>
+        <div class="field input-field">
+          <%= f.email_field :name, autofocus: true, autocomplete: "name", type: "text", placeholder: "Name", class: "input" %>
+        </div>
+        
+        <div class="field input-field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", type: "email", placeholder: "Email", class: "input" %>
+        </div>
+
+        <div class="field select-field">
+          <%= f.select :role, options_for_select(User.roles.map {|key, value| [key.titleize, User.roles.key(value)]}, User.roles) %>
+        </div>
+        
+        <div class="field input-field">
+          <%= f.password_field :password, autocomplete: "new-password", type: "password", placeholder:"Create password", class: "password" %>
+        </div>
+        
+        <div class="field input-field">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", type: "password", placeholder: "Confirm password", class: "password" %>
+          <i class='bx bx-hide eye-icon'></i>
+        </div>
+        
+        <div class="field button-field">
+          <button>Signup</button>
+        </div>
+
+        <%= link_to users_path, data: { confirm: 'Do you really want to cancel this registration?' } do %>
+          <div class="field button-field">
+            <button>Cancelar</button>
+          </div>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+</section>

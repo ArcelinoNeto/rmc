@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'users/index'
   resources :adresses
   resources :citizens
   resources :counties
+  resources :users, except: [:show, :destroy]
+
   get 'home/index'
   devise_for :users
 

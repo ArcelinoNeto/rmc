@@ -1,0 +1,48 @@
+<h1><%= controller_name.titleize %></h1>
+
+<%#= render partial: 'users/shared/search' %>
+
+<span class="total-list">
+  Total List: <%= @users.count %>
+</span>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Created_at</th>
+      <th>
+        <%= link_to new_user_path do %>
+          <i class='bx bx-plus' ></i>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name.titleize %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role.titleize %></td>
+        <td><%= user.created_at.to_s(:short) %></td>
+        <td>
+          <%= link_to edit_user_path(user) do %>
+            <i class="bx bx-edit" ></i>
+          <% end %>
+        </td>
+        <td>
+          <%#= link_to user, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class='bx bx-x'></i>
+          <%# <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%#= paginate @users %>
