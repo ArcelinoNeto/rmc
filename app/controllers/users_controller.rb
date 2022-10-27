@@ -4,9 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
-    @users = User.all
-    # @search = UserSearch.new(search_params)
-    # @users = @search.results.order(:id).page(params[:page])
+    @users = User.all.order(name: :asc).page(params[:page])
   end
 
  def new

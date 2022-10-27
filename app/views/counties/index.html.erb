@@ -1,31 +1,56 @@
-<p id="notice"><%= notice %></p>
+<h1><%= controller_name.titleize %></h1>
 
-<h1>Counties</h1>
+<span class="total-list">
+  Total List: <%= @counties.count %>
+</span>
 
 <table>
   <thead>
     <tr>
+      <th style="width: 1%"></th>
       <th>Name</th>
       <th>Status</th>
       <th>User</th>
-      <th colspan="3"></th>
+      <th>Created_at</th>
+      <th colspan="2">
+        <% if current_user.role == "admin" %>
+          <%= link_to new_county_path do %>
+            <i class='bx bx-plus' ></i>
+          <% end %>
+        <% end %>
+      </th>
     </tr>
   </thead>
 
   <tbody>
     <% @counties.each do |county| %>
       <tr>
+        <td>
+          <%= link_to county do %>
+            <i class='bx bx-show'></i>
+          <% end %>
+        </td>
         <td><%= county.name %></td>
         <td><%= county.status %></td>
-        <td><%= county.user_id %></td>
-        <td><%= link_to 'Show', county %></td>
-        <td><%= link_to 'Edit', edit_county_path(county) %></td>
-        <td><%= link_to 'Destroy', county, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= county.user.name %></td>
+        <td><%= county.created_at.to_s(:short) %></td>
+        <td>
+          <% if current_user.role == "admin" %>
+            <%= link_to edit_county_path(county) do %>
+              <i class="bx bx-edit" ></i>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% if current_user.role == "admin" %>
+            <%= link_to county, method: :delete, data: { confirm: 'Do you really want to delete this citizen?' } do %>
+              <i class='bx bx-x'></i>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New County', new_county_path %>
+<%= paginate @counties %>

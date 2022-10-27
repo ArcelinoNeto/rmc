@@ -3,7 +3,7 @@ class CountiesController < ApplicationController
 
   # GET /counties or /counties.json
   def index
-    @counties = County.where(status: 0)
+    @counties = County.where(status: 0).order(name: :asc).page(params[:page])
   end
 
   # GET /counties/1 or /counties/1.json

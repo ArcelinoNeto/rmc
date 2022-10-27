@@ -3,7 +3,7 @@ class CitizensController < ApplicationController
 
   # GET /citizens or /citizens.json
   def index
-    @citizens = Citizen.where(status: 0).order(full_name: :asc)
+    @citizens = Citizen.where(status: 0).order(full_name: :asc).page(params[:page])
   end
 
   # GET /citizens/1 or /citizens/1.json

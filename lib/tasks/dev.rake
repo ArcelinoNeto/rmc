@@ -1,12 +1,6 @@
 namespace :dev do
   desc "Configurando ambiente de desenvolvimento e teste"
   task setup: :environment do
-    puts "Zerando a base..."
-    
-    %x(rails db:drop db:create db:migrate)
-    
-    puts "Base zerada com sucesso!"
-    puts " "    
     
     puts "Cadastrando Usuários!"
 
@@ -38,7 +32,7 @@ namespace :dev do
     
     puts "Cadastrando Cidadões!"
 
-    50.times do |i|
+    100.times do |i|
       Faker::Config.locale = 'pt-BR'
       Citizen.create!(
         full_name: Faker::Name.name,
@@ -57,7 +51,7 @@ namespace :dev do
     
     puts "Cadastrando Endereços!"
 
-    10.times do |i|
+    100.times do |i|
       Address.create!(
         postal_code: Faker::Address.postcode,
         street: Faker::Address.street_name,

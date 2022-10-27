@@ -1,27 +1,22 @@
-<h1>Citizens</h1>
-
-<%#= render partial: 'users/shared/search' %>
+<h1><%= controller_name.titleize %></h1>
 
 <span class="total-list">
   Total List: <%= @citizens.count %>
 </span>
 
-
 <table>
   <thead>
     <tr>
       <th style="width: 1%"></th>
-      <th style="width: 2%">Id</th>
       <th>Full name</th>
       <th>Cpf</th>
       <th>Cns</th>
       <th>Email</th>
       <th>Birthdate</th>
       <th>Phone</th>
-      <th>Photograph</th>
       <th>County</th>
       <th>Created_at</th>
-      <th colspan="2">
+      <th>
         <% if current_user.role == "admin" %>
           <%= link_to new_citizen_path do %>
             <i class='bx bx-plus' ></i>
@@ -39,14 +34,12 @@
             <i class='bx bx-show'></i>
           <% end %>
         </td>
-        <td><%= citizen.id %></td>
         <td><%= citizen.full_name %></td>
         <td><%= citizen.cpf %></td>
         <td><%= citizen.cns %></td>
         <td><%= citizen.email %></td>
-        <td><%= citizen.birthdate %></td>
+        <td><%= citizen.birthdate.to_date.to_s(:rfc822) %></td>
         <td><%= citizen.phone %></td>
-        <td><%= citizen.photograph %></td>
         <td><%= citizen.county.name %></td>
         <td><%= citizen.created_at.to_s(:short) %></td>
         <td>
@@ -56,15 +49,9 @@
             <% end %>
           <% end %>
         </td>
-        <td>
-          <% if current_user.role == "admin" %>
-            <%= link_to citizen, method: :delete, data: { confirm: 'Do you really want to delete this citizen?' } do %>
-              <i class='bx bx-x'></i>
-            <% end %>
-          <% end %>
-        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<%= paginate @citizens %>

@@ -47,13 +47,20 @@
               <span class="tooltip">County</span>
             </li>
 
-          
-              <li>
-                <%= link_to users_path do %>
-                  <i class='bx bx-user' ></i>
-                  <span class="links_name">User</span>
-                <% end %>
-                <span class="tooltip">User</span>
+            <li>
+              <%= link_to addresses_path do %>
+                <i class='bx bx-spreadsheet'></i>
+                <span class="links_name">Address</span>
+              <% end %>
+              <span class="tooltip">Address</span>
+            </li>
+            
+            <li>
+              <%= link_to users_path do %>
+                <i class='bx bx-user' ></i>
+                <span class="links_name">User</span>
+              <% end %>
+              <span class="tooltip">User</span>
             </li>
           <% end %>
         <% end %>

@@ -1,10 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h1><%= controller_name.titleize %></h1>
 
-<h1>addresses</h1>
+<span class="total-list">
+  Total List: <%= @addresses.count %>
+</span>
 
 <table>
   <thead>
     <tr>
+      <th style="width: 1%"></th>
       <th>Postal code</th>
       <th>Street</th>
       <th>District</th>
@@ -12,7 +15,14 @@
       <th>State</th>
       <th>Ibge code</th>
       <th>Citizen</th>
-      <th colspan="3"></th>
+      <th>Created_at</th>
+      <th colspan="2">
+        <% if current_user.role == "admin" %>
+          <%= link_to new_address_path do %>
+            <i class='bx bx-plus' ></i>
+          <% end %>
+        <% end %>
+      </th>
     </tr>
   </thead>
 
@@ -25,15 +35,25 @@
         <td><%= address.city %></td>
         <td><%= address.state %></td>
         <td><%= address.ibge_code %></td>
-        <td><%= address.citizen %></td>
-        <td><%= link_to 'Show', address %></td>
-        <td><%= link_to 'Edit', edit_address_path(address) %></td>
-        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= address.citizen.full_name %></td>
+        <td><%= address.created_at.to_s(:short) %></td>
+        <td>
+          <% if current_user.role == "admin" %>
+            <%= link_to edit_address_path(address) do %>
+              <i class="bx bx-edit" ></i>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% if current_user.role == "admin" %>
+            <%= link_to address, method: :delete, data: { confirm: 'Do you really want to delete this citizen?' } do %>
+              <i class='bx bx-x'></i>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New address', new_address_path %>
+<%= paginate @addresses %>
