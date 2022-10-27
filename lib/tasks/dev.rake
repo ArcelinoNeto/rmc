@@ -6,21 +6,7 @@ namespace :dev do
     %x(rails db:drop db:create db:migrate)
     
     puts "Base zerada com sucesso!"
-    puts " "
-    
-    puts "Cadastrando Usuários Admin!"
-
-    User.create!(
-      name: 'Admin',
-      email: 'admin@admin.com',
-      role: 0,
-      password: "123456",
-      password_confirmation: "123456"
-      )
-      
-    puts "Usuários Admin cadastrados com sucesso!"
-    puts " "
-    
+    puts " "    
     
     puts "Cadastrando Usuários!"
 
@@ -40,7 +26,7 @@ namespace :dev do
 
     puts "Cadastrando Município!"
 
-    10.times do |i|
+    50.times do |i|
       County.create!(
         name: Faker::Address.city,
         status: 0,
@@ -52,7 +38,7 @@ namespace :dev do
     
     puts "Cadastrando Cidadões!"
 
-    10.times do |i|
+    50.times do |i|
       Faker::Config.locale = 'pt-BR'
       Citizen.create!(
         full_name: Faker::Name.name,
