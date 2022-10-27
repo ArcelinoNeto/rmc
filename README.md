@@ -1,24 +1,70 @@
-# README
+# About
+This project is the result of the challenge proposed by the Levante company.
+The project proposal is a library management system.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Project
+The project was built following the rules defined by the staff of [Levante](https://gist.github.com/caioagiani/66b26f85ab6db506fecb9a90a04389f7).
 
-Things you may want to cover:
 
-* Ruby version
+# Technology stack
+This is application using 
+- ruby on rails ``6.1.6.1``
+- ruby ``2.7.1``
+- html
+- css
+- javascript
+- postgresql
 
-* System dependencies
+# Database diagram
+![library](https://github.com/ArcelinoNeto/rmc/blob/master/RMC.png)
 
-* Configuration
+# Additional definitions
+- Authentication with gem devise
+- Authorization with the cancancan gem
+- Filters (search and sort) with the Searchlight gem
+- Pagination with the Kaminari gem
 
-* Database creation
+## Set up
 
-* Database initialization
+1. Clone the project
+```
+git clone https://github.com/ArcelinoNeto/rmc.git
+```
+```
+cd RMC
+```
+2. Install dependencies
+``` 
+bundle install
+``` 
 
-* How to run the test suite
+3. Database configuration 
 
-* Services (job queues, cache servers, search engines, etc.)
+To configure the database, run the command below
+```
+rails db:setup
+```
+To populate with data for testing run the command below
+```
+rails dev:setup
+```
+4. Create admin user with `rails create_user`.
 
-* Deployment instructions
+Enter rails console
 
-* ...
+```
+rails c
+```
+
+Run the command
+
+```
+User.create!(name: 'Admin', email: 'admin@admin.com', role: 'admin', password: '123456', password_confirmation: '123456')
+```
+Role Options:
+admin || city_user
+
+5. Start the project
+```
+rails s
+```
