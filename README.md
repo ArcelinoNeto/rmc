@@ -1,6 +1,6 @@
 # About
-Este projeto é fruto do desafio proposto pela empresa OM30.
-A proposta do projeto é um sistema de cadastro de Cidades e Habitantes.
+This project is the result of the challenge proposed by the company OM30.
+The project proposal is a registration system for Cities and Inhabitants.
 
 # Project
 The project was built following the rules defined by the staff of OM30.
