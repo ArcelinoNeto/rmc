@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "adresses/index", type: :view do
+RSpec.describe "addresses/index", type: :view do
   before(:each) do
-    assign(:adresses, [
-      Adress.create!(
+    assign(:addresses, [
+      Address.create!(
         postal_code: "Postal Code",
         street: "Street",
         district: "District",
@@ -12,7 +12,7 @@ RSpec.describe "adresses/index", type: :view do
         ibge_code: "Ibge Code",
         citizen: ""
       ),
-      Adress.create!(
+      Address.create!(
         postal_code: "Postal Code",
         street: "Street",
         district: "District",
@@ -24,7 +24,7 @@ RSpec.describe "adresses/index", type: :view do
     ])
   end
 
-  it "renders a list of adresses" do
+  it "renders a list of addresses" do
     render
     assert_select "tr>td", text: "Postal Code".to_s, count: 2
     assert_select "tr>td", text: "Street".to_s, count: 2

@@ -12,51 +12,77 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :full_name %>
-    <%= form.text_field :full_name %>
+    <%= form.text_field :full_name, autofocus: true, autocomplete: "full_name", type: "text", placeholder: "Full Name", class: "input" %>
   </div>
 
   <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
+    <%= form.text_field :cpf, autofocus: true, autocomplete: "off", type: "number", placeholder: "CPF", class: "input", maxlength: "11" %>
   </div>
 
   <div class="field">
-    <%= form.label :cns %>
-    <%= form.text_field :cns %>
+    <%= form.text_field :cns, autofocus: true, autocomplete: "cns", type: "number", placeholder: "CNS", class: "input" %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, autofocus: true, autocomplete: "email", type: "email", placeholder: "E-mail", class: "input" %>
   </div>
 
   <div class="field">
-    <%= form.label :birthdate %>
-    <%= form.text_field :birthdate %>
+    <%= form.text_field :birthdate, autofocus: true, autocomplete: "birthdate", type: "date", placeholder: "Birthdate", class: "input" %>
   </div>
 
   <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
+    <%= form.text_field :phone, autofocus: true, autocomplete: "phone", type: "number", placeholder: "Phone", class: "input" %>
   </div>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.select :status, options_for_select(Citizen.statuses.map {|key, value| [key.titleize, Citizen.statuses.key(value)]}, @citizen), {prompt: "Select Status"} %>
   </div>
 
   <div class="field">
-    <%= form.label :photograph %>
-    <%= form.text_field :photograph %>
+    <%= form.text_field :photograph, autofocus: true, autocomplete: "photograph", type: "number", placeholder: "Photograph", class: "input" %>
   </div>
 
   <div class="field">
-    <%= form.label :county_id %>
-    <%= form.text_field :county_id %>
+    <%= form.text_field :county_id, autofocus: true, autocomplete: "county", type: "text", placeholder: "County", class: "input" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <%= form.fields_for :address do |address_fields| %>
+    <div class="field">
+      <%= address_fields.text_field :postal_code, autofocus: true, type: "number", placeholder: "Postal Code", class: "input" %>
+    </div>
+    
+    <div class="field">
+      <%= address_fields.text_field :street, autofocus: true, type: "text", placeholder: "Street", class: "input" %>
+    </div>
+    
+    <div class="field">
+      <%= address_fields.text_field :district, autofocus: true, type: "text", placeholder: "District", class: "input" %>
+    </div>
+    
+    <div class="field">
+      <%= address_fields.text_field :city, autofocus: true, type: "text", placeholder: "City", class: "input" %>
+    </div>
+    
+    <div class="field">
+      <%= address_fields.text_field :state, autofocus: true, type: "text", placeholder: "State", class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= address_fields.text_field :ibge_code, autofocus: true, type: "number", placeholder: "IBGE Code", class: "input" %>
+    </div>
+  <% end %>
+  
+
+  <div>
+    <%= link_to citizens_path do %>
+      <button class="button-return">
+        Return
+      </button>
+    <% end %>
+      
+    <button class="button-submit">
+      Save
+    </button> 
   </div>
 <% end %>

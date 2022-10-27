@@ -3,7 +3,7 @@ class CitizensController < ApplicationController
 
   # GET /citizens or /citizens.json
   def index
-    @citizens = Citizen.all
+    @citizens = Citizen.where(status: 0).order(full_name: :asc)
   end
 
   # GET /citizens/1 or /citizens/1.json
@@ -13,6 +13,7 @@ class CitizensController < ApplicationController
   # GET /citizens/new
   def new
     @citizen = Citizen.new
+    @citizen.build_address
   end
 
   # GET /citizens/1/edit
@@ -25,7 +26,7 @@ class CitizensController < ApplicationController
 
     respond_to do |format|
       if @citizen.save
-        format.html { redirect_to citizen_url(@citizen), notice: "Citizen was successfully created." }
+        format.html { redirect_to citizens_path, notice: "Citizen was successfully created." }
         format.json { render :show, status: :created, location: @citizen }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class CitizensController < ApplicationController
   def update
     respond_to do |format|
       if @citizen.update(citizen_params)
-        format.html { redirect_to citizen_url(@citizen), notice: "Citizen was successfully updated." }
+        format.html { redirect_to citizens_path, notice: "Citizen was successfully updated." }
         format.json { render :show, status: :ok, location: @citizen }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class CitizensController < ApplicationController
     @citizen.destroy
 
     respond_to do |format|
-      format.html { redirect_to citizens_url, notice: "Citizen was successfully destroyed." }
+      format.html { redirect_to citizens_path, notice: "Citizen was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +66,6 @@ class CitizensController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def citizen_params
-      params.require(:citizen).permit(:full_name, :cpf, :cns, :email, :birthdate, :phone, :status, :photograph, :county_id)
+      params.require(:citizen).permit(:full_name, :cpf, :cns, :email, :birthdate, :phone, :status, :photograph, :county_id, address_attributes: [:postal_code, :street, :district, :city, :state, :ibege_code])
     end
 end

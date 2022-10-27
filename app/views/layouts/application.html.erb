@@ -31,14 +31,6 @@
           </li>
 
           <li>
-            <%= link_to counties_path do %>
-              <i class='bx bxs-city' ></i>
-              <span class="links_name">County</span>
-            <% end %>
-            <span class="tooltip">County</span>
-          </li>
-
-          <li>
             <%= link_to citizens_path do %>
               <i class='bx bx-group'></i>
               <span class="links_name">Citizen</span>
@@ -47,6 +39,15 @@
           </li>
 
           <% if current_user.role == "admin" %>
+            <li>
+              <%= link_to counties_path do %>
+                <i class='bx bxs-city' ></i>
+                <span class="links_name">County</span>
+              <% end %>
+              <span class="tooltip">County</span>
+            </li>
+
+          
               <li>
                 <%= link_to users_path do %>
                   <i class='bx bx-user' ></i>

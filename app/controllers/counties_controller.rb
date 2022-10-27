@@ -3,7 +3,7 @@ class CountiesController < ApplicationController
 
   # GET /counties or /counties.json
   def index
-    @counties = County.all
+    @counties = County.where(status: 0)
   end
 
   # GET /counties/1 or /counties/1.json

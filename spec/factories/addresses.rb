@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :adress do
+  factory :address do
     postal_code { "MyString" }
     street { "MyString" }
     district { "MyString" }

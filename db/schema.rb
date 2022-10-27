@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2022_10_25_205359) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "adresses", force: :cascade do |t|
+  create_table "addresses", force: :cascade do |t|
     t.string "postal_code"
     t.string "street"
     t.string "district"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2022_10_25_205359) do
     t.bigint "citizen_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["citizen_id"], name: "index_adresses_on_citizen_id"
+    t.index ["citizen_id"], name: "index_addresses_on_citizen_id"
   end
 
   create_table "citizens", force: :cascade do |t|
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2022_10_25_205359) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "adresses", "citizens"
+  add_foreign_key "addresses", "citizens"
   add_foreign_key "citizens", "counties"
   add_foreign_key "counties", "users"
 end

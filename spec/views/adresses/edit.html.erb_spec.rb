@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "adresses/edit", type: :view do
+RSpec.describe "addresses/edit", type: :view do
   before(:each) do
-    @adress = assign(:adress, Adress.create!(
+    @address = assign(:address, Address.create!(
       postal_code: "MyString",
       street: "MyString",
       district: "MyString",
@@ -13,24 +13,24 @@ RSpec.describe "adresses/edit", type: :view do
     ))
   end
 
-  it "renders the edit adress form" do
+  it "renders the edit address form" do
     render
 
-    assert_select "form[action=?][method=?]", adress_path(@adress), "post" do
+    assert_select "form[action=?][method=?]", address_path(@address), "post" do
 
-      assert_select "input[name=?]", "adress[postal_code]"
+      assert_select "input[name=?]", "address[postal_code]"
 
-      assert_select "input[name=?]", "adress[street]"
+      assert_select "input[name=?]", "address[street]"
 
-      assert_select "input[name=?]", "adress[district]"
+      assert_select "input[name=?]", "address[district]"
 
-      assert_select "input[name=?]", "adress[city]"
+      assert_select "input[name=?]", "address[city]"
 
-      assert_select "input[name=?]", "adress[state]"
+      assert_select "input[name=?]", "address[state]"
 
-      assert_select "input[name=?]", "adress[ibge_code]"
+      assert_select "input[name=?]", "address[ibge_code]"
 
-      assert_select "input[name=?]", "adress[citizen]"
+      assert_select "input[name=?]", "address[citizen]"
     end
   end
 end

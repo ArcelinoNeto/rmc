@@ -72,7 +72,7 @@ namespace :dev do
     puts "Cadastrando Endereços!"
 
     10.times do |i|
-      Adress.create!(
+      Address.create!(
         postal_code: Faker::Address.postcode,
         street: Faker::Address.street_name,
         district: Faker::Address.community,

@@ -12,8 +12,8 @@
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/adresses", type: :request do
-  # Adress. As you add validations to Adress, be sure to
+RSpec.describe "/addresses", type: :request do
+  # Address. As you add validations to Address, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -25,58 +25,58 @@ RSpec.describe "/adresses", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Adress.create! valid_attributes
-      get adresses_url
+      Address.create! valid_attributes
+      get addresses_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      adress = Adress.create! valid_attributes
-      get adress_url(adress)
+      address = Address.create! valid_attributes
+      get address_url(address)
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_adress_url
+      get new_address_url
       expect(response).to be_successful
     end
   end
 
   describe "GET /edit" do
     it "render a successful response" do
-      adress = Adress.create! valid_attributes
-      get edit_adress_url(adress)
+      address = Address.create! valid_attributes
+      get edit_address_url(address)
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new Adress" do
+      it "creates a new Address" do
         expect {
-          post adresses_url, params: { adress: valid_attributes }
-        }.to change(Adress, :count).by(1)
+          post addresses_url, params: { address: valid_attributes }
+        }.to change(Address, :count).by(1)
       end
 
-      it "redirects to the created adress" do
-        post adresses_url, params: { adress: valid_attributes }
-        expect(response).to redirect_to(adress_url(Adress.last))
+      it "redirects to the created address" do
+        post addresses_url, params: { address: valid_attributes }
+        expect(response).to redirect_to(address_url(Address.last))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new Adress" do
+      it "does not create a new Address" do
         expect {
-          post adresses_url, params: { adress: invalid_attributes }
-        }.to change(Adress, :count).by(0)
+          post addresses_url, params: { address: invalid_attributes }
+        }.to change(Address, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post adresses_url, params: { adress: invalid_attributes }
+        post addresses_url, params: { address: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -88,42 +88,42 @@ RSpec.describe "/adresses", type: :request do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested adress" do
-        adress = Adress.create! valid_attributes
-        patch adress_url(adress), params: { adress: new_attributes }
-        adress.reload
+      it "updates the requested address" do
+        address = Address.create! valid_attributes
+        patch address_url(address), params: { address: new_attributes }
+        address.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the adress" do
-        adress = Adress.create! valid_attributes
-        patch adress_url(adress), params: { adress: new_attributes }
-        adress.reload
-        expect(response).to redirect_to(adress_url(adress))
+      it "redirects to the address" do
+        address = Address.create! valid_attributes
+        patch address_url(address), params: { address: new_attributes }
+        address.reload
+        expect(response).to redirect_to(address_url(address))
       end
     end
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        adress = Adress.create! valid_attributes
-        patch adress_url(adress), params: { adress: invalid_attributes }
+        address = Address.create! valid_attributes
+        patch address_url(address), params: { address: invalid_attributes }
         expect(response).to be_successful
       end
     end
   end
 
   describe "DELETE /destroy" do
-    it "destroys the requested adress" do
-      adress = Adress.create! valid_attributes
+    it "destroys the requested address" do
+      address = Address.create! valid_attributes
       expect {
-        delete adress_url(adress)
-      }.to change(Adress, :count).by(-1)
+        delete address_url(address)
+      }.to change(Address, :count).by(-1)
     end
 
-    it "redirects to the adresses list" do
-      adress = Adress.create! valid_attributes
-      delete adress_url(adress)
-      expect(response).to redirect_to(adresses_url)
+    it "redirects to the addresses list" do
+      address = Address.create! valid_attributes
+      delete address_url(address)
+      expect(response).to redirect_to(addresses_url)
     end
   end
 end

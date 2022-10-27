@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'users/index'
-  resources :adresses
+  resources :addresses
   resources :citizens
   resources :counties
   resources :users, except: [:show, :destroy]

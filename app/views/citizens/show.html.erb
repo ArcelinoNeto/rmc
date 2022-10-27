@@ -1,49 +1,70 @@
-<p id="notice"><%= notice %></p>
+<h1><%= controller_name.titleize %></h1>
 
-<p>
+<div>
   <strong>Full name:</strong>
   <%= @citizen.full_name %>
-</p>
+</div>
 
-<p>
+<br>
+
+<div>
   <strong>Cpf:</strong>
   <%= @citizen.cpf %>
-</p>
+</div>
 
-<p>
+<br>
+
+<div>
   <strong>Cns:</strong>
   <%= @citizen.cns %>
-</p>
+</div>
 
-<p>
+<br>
+
+<div>
   <strong>Email:</strong>
   <%= @citizen.email %>
-</p>
+</div>
 
-<p>
+<br>
+
+<div>
   <strong>Birthdate:</strong>
   <%= @citizen.birthdate %>
-</p>
+</div>
 
-<p>
+<br>
+
+<div>
   <strong>Phone:</strong>
   <%= @citizen.phone %>
-</p>
+</div>
 
-<p>
+<br>
+
+<div>
   <strong>Status:</strong>
   <%= @citizen.status %>
-</p>
+</div>
 
-<p>
+<br>
+
+<div>
   <strong>Photograph:</strong>
   <%= @citizen.photograph %>
-</p>
+</div>
 
-<p>
+<br>
+
+<div>
   <strong>County:</strong>
-  <%= @citizen.county_id %>
-</p>
+  <%= @citizen.county.name %>
+</div>
 
-<%= link_to 'Edit', edit_citizen_path(@citizen) %> |
-<%= link_to 'Back', citizens_path %>
+<br> 
+
+<%= link_to citizens_path do %>
+  <button class="button-return">
+    Return
+  </button>
+<% end %>

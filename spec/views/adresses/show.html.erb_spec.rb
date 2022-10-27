@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "adresses/show", type: :view do
+RSpec.describe "addresses/show", type: :view do
   before(:each) do
-    @adress = assign(:adress, Adress.create!(
+    @address = assign(:address, Address.create!(
       postal_code: "Postal Code",
       street: "Street",
       district: "District",
