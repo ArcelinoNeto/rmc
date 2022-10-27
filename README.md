@@ -1,9 +1,9 @@
 # About
-This project is the result of the challenge proposed by the Levante company.
-The project proposal is a library management system.
+Este projeto é fruto do desafio proposto pela empresa OM30.
+A proposta do projeto é um sistema de cadastro de Cidades e Habitantes.
 
 # Project
-The project was built following the rules defined by the staff of [Levante](https://gist.github.com/caioagiani/66b26f85ab6db506fecb9a90a04389f7).
+The project was built following the rules defined by the staff of OM30.
 
 
 # Technology stack
@@ -17,12 +17,6 @@ This is application using
 
 # Database diagram
 ![library](https://github.com/ArcelinoNeto/rmc/blob/master/RMC.png)
-
-# Additional definitions
-- Authentication with gem devise
-- Authorization with the cancancan gem
-- Filters (search and sort) with the Searchlight gem
-- Pagination with the Kaminari gem
 
 ## Set up
 
