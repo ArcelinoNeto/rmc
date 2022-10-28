@@ -43,7 +43,8 @@ namespace :dev do
         phone: Faker::PhoneNumber.cell_phone,
         status: 0,
         photograph: Faker::File.mime_type(media_type: 'image'),
-        county: County.all.sample        
+        county: County.all.sample,
+        registered_by: User.all.sample.id
       )
     end
     puts "Cidadões cadastradas com sucesso!"

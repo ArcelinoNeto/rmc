@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'users/index'
   resources :addresses
   resources :citizens
-  resources :counties
+  resources :counties, except: [:destroy]
   resources :users, except: [:show, :destroy]
 
   get 'home/index'

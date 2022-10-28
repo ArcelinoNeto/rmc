@@ -17,10 +17,8 @@
       <th>County</th>
       <th>Created_at</th>
       <th>
-        <% if current_user.role == "admin" %>
-          <%= link_to new_citizen_path do %>
-            <i class='bx bx-plus' ></i>
-          <% end %>
+        <%= link_to new_citizen_path do %>
+          <i class='bx bx-plus' ></i>
         <% end %>
       </th>
     </tr>
@@ -43,10 +41,8 @@
         <td><%= citizen.county.name %></td>
         <td><%= citizen.created_at.to_s(:short) %></td>
         <td>
-          <% if current_user.role == "admin" %>
-            <%= link_to edit_citizen_path(citizen) do %>
-              <i class="bx bx-edit" ></i>
-            <% end %>
+          <%= link_to edit_citizen_path(citizen) do %>
+            <i class="bx bx-edit" ></i>
           <% end %>
         </td>
       </tr>

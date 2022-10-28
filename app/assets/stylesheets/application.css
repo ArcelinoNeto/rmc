@@ -447,16 +447,16 @@ th{
 
 .filter-title{
   font-size: 12px;
-  color: #5e8bb8;
+  color: #363636;
 }
 
 .filter{
-  border: solid 1px #5e8bb8 ;
+  border: solid 1px #363636 ;
   padding: 5px;
   font-size: 15px;
   font-weight: 400;
   border-radius: 6px;
-  color: #5e8bb8;  
+  color: #363636;  
   background: #fff;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -464,9 +464,9 @@ th{
 }
 
 .filter:hover{
-  border: solid 1px #5e8bb8;
+  border: solid 1px #363636;
   padding: 5px;
-  color: #5e8bb8;
+  color: #363636;
   background: #f1f1f1;
   border-radius: 6px;
 }

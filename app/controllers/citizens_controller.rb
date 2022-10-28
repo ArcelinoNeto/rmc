@@ -3,7 +3,13 @@ class CitizensController < ApplicationController
 
   # GET /citizens or /citizens.json
   def index
-    @citizens = Citizen.where(status: 0).order(full_name: :asc).page(params[:page])
+
+    if current_user.role == "admin"
+      @citizens = Citizen.where(status: 0).order(full_name: :asc).page(params[:page])
+    else
+      @citizens = Citizen.where(status: 0, registered_by: current_user.id).order(full_name: :asc).page(params[:page])
+    end
+
   end
 
   # GET /citizens/1 or /citizens/1.json
@@ -66,6 +72,6 @@ class CitizensController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def citizen_params
-      params.require(:citizen).permit(:full_name, :cpf, :cns, :email, :birthdate, :phone, :status, :photograph, :county_id, address_attributes: [:postal_code, :street, :district, :city, :state, :ibege_code])
+      params.require(:citizen).permit(:full_name, :cpf, :cns, :email, :birthdate, :phone, :status, :photograph, :county_id, :registered_by, address_attributes: [:postal_code, :street, :district, :city, :state, :ibege_code])
     end
 end

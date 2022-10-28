@@ -12,7 +12,7 @@
       <th>Status</th>
       <th>User</th>
       <th>Created_at</th>
-      <th colspan="2">
+      <th>
         <% if current_user.role == "admin" %>
           <%= link_to new_county_path do %>
             <i class='bx bx-plus' ></i>
@@ -38,13 +38,6 @@
           <% if current_user.role == "admin" %>
             <%= link_to edit_county_path(county) do %>
               <i class="bx bx-edit" ></i>
-            <% end %>
-          <% end %>
-        </td>
-        <td>
-          <% if current_user.role == "admin" %>
-            <%= link_to county, method: :delete, data: { confirm: 'Do you really want to delete this citizen?' } do %>
-              <i class='bx bx-x'></i>
             <% end %>
           <% end %>
         </td>

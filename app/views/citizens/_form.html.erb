@@ -28,11 +28,15 @@
   </div>
 
   <div class="field">
-    <%= form.text_field :birthdate, autofocus: true, autocomplete: "birthdate", type: "date", placeholder: "Birthdate", class: "input" %>
+    <span class="filter-title">
+      Birthdate:
+      <%= form.text_field :birthdate, autofocus: true, autocomplete: "birthdate", type: "date", placeholder: "Birthdate", class: "input" %>
+    </span>
   </div>
+  <br>
 
   <div class="field">
-    <%= form.text_field :phone, autofocus: true, autocomplete: "phone", type: "number", placeholder: "Phone", class: "input" %>
+    <%= form.text_field :phone, autofocus: true, autocomplete: "phone", type: "number", placeholder: "Phone" %>
   </div>
 
   <div class="field">
@@ -44,7 +48,11 @@
   </div>
 
   <div class="field">
-    <%= form.text_field :county_id, autofocus: true, autocomplete: "county", type: "text", placeholder: "County", class: "input" %>
+    <%= form.collection_select :county_id, County.select("id, name"), :id, :name, {prompt: "Select County"} %>
+  </div>
+
+  <div class="field">
+    <%= form.select :registered_by, options_for_select([ current_user.id ]), type: "hidden" %>
   </div>
 
   <%= form.fields_for :address do |address_fields| %>
@@ -72,7 +80,6 @@
       <%= address_fields.text_field :ibge_code, autofocus: true, type: "number", placeholder: "IBGE Code", class: "input" %>
     </div>
   <% end %>
-  
 
   <div>
     <%= link_to citizens_path do %>
